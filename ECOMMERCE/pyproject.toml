@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ecommerce"
+version = "0.1.0"
+description = "an ecommerce website built with python Django and utilizing bootstrap"
+authors = ["batbat99 <hbatayneh@outlook.com>"]
+license = "BSD-3-Clause"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^3.2.7"
+Pillow = "^8.3.2"
+coverage = "^5.5"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
