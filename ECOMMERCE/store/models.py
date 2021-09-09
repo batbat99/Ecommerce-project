@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+
 class Category(models.Model):
     name = models.CharField(max_length=255, db_index=True)
     slug = models.SlugField(max_length=255, unique=True)
@@ -10,11 +11,14 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     def get_absolute_url(self):
+        """
+        constructs a dynamic url for a category object
+        """
         return reverse("store:category_list", args=[self.slug])
-    
-    
+
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
@@ -35,8 +39,10 @@ class Product(models.Model):
         ordering = ('-created',)
 
     def get_absolute_url(self):
+        """
+        constructs a dynamic url for a product object
+        """
         return reverse('store:product_detail', args=[self.slug])
 
     def __str__(self):
         return self.title
-
