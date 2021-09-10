@@ -3,20 +3,11 @@ from django.shortcuts import get_object_or_404, render
 from .models import Category, Product
 
 
-def categories(request):
-    """
-    returns all the categories in the database
-    """
-    return {
-        'categories': Category.objects.all()
-    }
-
-
-def all_products(request):
+def product_all(request):
     """
     renders the home template with all the products available in the databaase
     """
-    products = Product.objects.all()
+    products = Product.products.all()
     return render(request, 'store/home.html', {'products': products})
 
 
@@ -25,7 +16,7 @@ def product_detail(request, slug):
     renders a page showing all the details for a particular product
     """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
-    return render(request, 'store/products/detail.html', {'product': product})
+    return render(request, 'store/products/single.html', {'product': product})
 
 
 def category_list(request, category_slug):
